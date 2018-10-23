@@ -21,10 +21,10 @@ public interface AdvertiserMapper {
 
 	@Insert("INSERT INTO advertiser(firstName, lastName, creditLimit) VALUES (#{firstName}, #{lastName}, #{creditLimit})")
 	@Options(useGeneratedKeys=true, keyProperty="id", keyColumn="ID")
-	public Advertiser createAdvertiser(Advertiser advertiser);
+	public void createAdvertiser(Advertiser advertiser);
 	
 	@Update("UPDATE advertiser SET firstName = #{firstName}, lastName = #{lastName}, creditLimit = #{creditLimit} WHERE id = #{id}")
-	public Advertiser updateAdvertiser(Advertiser advertiser);
+	public void updateAdvertiser(Advertiser advertiser);
 
 	
 	@Select("SELECT * FROM advertiser WHERE id = #{id}") 
@@ -33,11 +33,5 @@ public interface AdvertiserMapper {
 	@Delete("DELETE FROM advertiser WHERE id = #{id}")
 	public void deleteAdvertiser(Long id);
 	
-	
-	/*
-	 * this.firstName = firstName;
-		this.lastName = lastName;
-		this.creditLimit = creditLimit;
-	 * 
-	 * */
 }
+	
