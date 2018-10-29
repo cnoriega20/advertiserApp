@@ -9,13 +9,15 @@ public class Advertiser {
 	
 	
 	
-	public Advertiser(Long id, String firstName, String lastName, double creditLimit) {
+	/*public Advertiser(Long id, String firstName, String lastName, double creditLimit) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.creditLimit = creditLimit;
-	}
+	}*/
 
+	public Advertiser(){}
+	
 	public Advertiser( String firstName, String lastName, double creditLimit) {
 		
 		this.firstName = firstName;

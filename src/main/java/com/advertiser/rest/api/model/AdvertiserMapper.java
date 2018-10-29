@@ -3,6 +3,9 @@
  */
 package com.advertiser.rest.api.model;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -21,11 +24,13 @@ public interface AdvertiserMapper {
 
 	@Insert("INSERT INTO advertiser(firstName, lastName, creditLimit) VALUES (#{firstName}, #{lastName}, #{creditLimit})")
 	@Options(useGeneratedKeys=true, keyProperty="id", keyColumn="ID")
-	public void createAdvertiser(Advertiser advertiser);
+	public int createAdvertiser(Advertiser advertiser);
 	
 	@Update("UPDATE advertiser SET firstName = #{firstName}, lastName = #{lastName}, creditLimit = #{creditLimit} WHERE id = #{id}")
 	public void updateAdvertiser(Advertiser advertiser);
 
+	@Select("SELECT * FROM advertiser")
+	List<Advertiser> getAllAdvertisers();
 	
 	@Select("SELECT * FROM advertiser WHERE id = #{id}") 
 	public Advertiser getAdvertiserById(Long id);

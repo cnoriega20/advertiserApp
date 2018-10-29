@@ -1,8 +1,9 @@
 package com.advertiser.rest.api.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
+
+import java.util.Optional;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,11 +24,11 @@ public class AdvertiserRepositoryTests {
 	public void createAdvertiserTest(){
 		Advertiser advertiser = new Advertiser("Kamila", "Myers", 7500);
 		advertiserMapper.createAdvertiser(advertiser);
+		assertThat(advertiser.getId() != 0);
+		Advertiser createdAdvertiser = advertiserMapper.getAdvertiserById(advertiser.getId());
+		assertNotNull(createdAdvertiser);
+		assertEquals(advertiser.getCreditLimit(), createdAdvertiser.getCreditLimit(), 0.001);	
 		
-		Advertiser otherAdvertiser = advertiserMapper.getAdvertiserById(advertiser.getId());
-		assertEquals("Kamila", otherAdvertiser.getFirstName());
-		assertEquals("Myers", otherAdvertiser.getLastName());
-			
 	}
 	
 	@Test
